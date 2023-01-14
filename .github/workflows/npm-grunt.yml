@@ -1,0 +1,27 @@
+name: NodeJS with Grunt
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3.6.0
+      with:
+        node-version: 12.22.9
+
+    - name: install
+      run: |
+        npm install
+        npm install koa
+        node ./02.js
+        
